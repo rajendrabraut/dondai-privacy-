@@ -1,0 +1,67 @@
+{
+  "manifest_version": 3,
+  "name": "Dondai – Content Blocker",
+  "version": "0.5.0",
+  "description": "Block ads and trackers, hide ad placeholders, and optionally filter adult domains.",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "declarativeNetRequest"
+  ],
+  "incognito": "not_allowed",
+  "action": {
+    "default_popup": "panel.html",
+    "default_title": "Dondai",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
+  },
+  "background": {
+    "service_worker": "worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "clean.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ads",
+        "enabled": true,
+        "path": "rules/ads.json"
+      },
+      {
+        "id": "trackers",
+        "enabled": true,
+        "path": "rules/trackers.json"
+      },
+      {
+        "id": "adult",
+        "enabled": false,
+        "path": "rules/adult.json"
+      },
+      {
+        "id": "strict",
+        "enabled": false,
+        "path": "rules/strict.json"
+      }
+    ]
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

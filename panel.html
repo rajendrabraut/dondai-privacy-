@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dondai</title>
+<link rel="stylesheet" href="panel.css">
+<script defer src="panel.js"></script>
+</head>
+<body>
+<header>
+  <p class="eyebrow">LOCAL BROWSER PROTECTION</p>
+  <h1>Dondai</h1>
+  <p id="site">Looking up the current tab…</p>
+</header>
+<main>
+  <section aria-labelledby="protection">
+    <h2 id="protection">Protection</h2>
+    <div class="switches">
+      <label><input id="ads" type="checkbox"> Ads</label>
+      <label><input id="trackers" type="checkbox"> Trackers</label>
+      <label><input id="cleanup" type="checkbox"> Ad placeholders</label>
+      <label title="Optional first-party EasyList rules"><input id="strict" type="checkbox"> First-party ads</label>
+      <label><input id="adult" type="checkbox"> Adult site list</label>
+    </div>
+    <button id="pause" type="button" disabled>Pause ad filtering on this site</button>
+    <details>
+      <summary>Custom adult domains</summary>
+      <p>One hostname per line. Custom rules apply even when the built-in adult list is off.</p>
+      <textarea id="domains" rows="4" aria-label="Custom adult domains" placeholder="example.com"></textarea>
+      <button id="save" type="button">Save domains</button>
+    </details>
+  </section>
+  <p class="about">The toolbar badge shows Chrome's rule action count for this tab. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a></p>
+  <p id="status" role="status"></p>
+</main>
+</body>
+</html>
